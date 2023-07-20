@@ -1,4 +1,4 @@
-package com.sstark.generalmarket;
+package com.sstark.generalmarket.infrastructure.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
