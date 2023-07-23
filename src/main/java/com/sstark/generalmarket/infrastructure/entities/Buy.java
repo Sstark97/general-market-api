@@ -3,6 +3,7 @@ package com.sstark.generalmarket.infrastructure.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "Buy")
@@ -23,6 +24,13 @@ public class Buy {
     private String comment;
 
     private String state;
+
+    @ManyToOne
+    @JoinColumn(name = "client_id", insertable = false, updatable = false)
+    private Client client;
+
+    @OneToMany(mappedBy = "buy")
+    private List<BuyProduct> buyProducts;
 
     public Integer getBuyId() {
         return buyId;

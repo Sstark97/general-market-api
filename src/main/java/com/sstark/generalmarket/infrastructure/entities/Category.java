@@ -2,6 +2,8 @@ package com.sstark.generalmarket.infrastructure.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Category")
 public class Category {
@@ -13,6 +15,9 @@ public class Category {
     private String description;
 
     private Boolean state;
+
+    @OneToMany(mappedBy = "category")
+    private List<Product> products;
 
     public Integer getCategoryId() {
         return categoryId;

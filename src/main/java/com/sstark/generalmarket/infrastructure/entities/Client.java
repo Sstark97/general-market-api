@@ -2,7 +2,10 @@ package com.sstark.generalmarket.infrastructure.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+
+import java.util.List;
 
 @Entity
 @Table(name = "Client")
@@ -19,6 +22,9 @@ public class Client {
     private String address;
 
     private String email;
+
+    @OneToMany(mappedBy = "client")
+    private List<Buy> buys;
 
     public String getId() {
         return id;

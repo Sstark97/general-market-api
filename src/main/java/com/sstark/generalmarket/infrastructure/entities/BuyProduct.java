@@ -1,9 +1,7 @@
 package com.sstark.generalmarket.infrastructure.entities;
 
 import com.sstark.generalmarket.infrastructure.embeddable.BuyProductPK;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Buy_Product")
@@ -16,6 +14,14 @@ public class BuyProduct {
     private Double total;
 
     private Boolean state;
+
+    @ManyToOne
+    @JoinColumn(name = "buy_id", insertable = false, updatable = false)
+    private Buy buy;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
+    private Product product;
 
     public BuyProductPK getId() {
         return id;
