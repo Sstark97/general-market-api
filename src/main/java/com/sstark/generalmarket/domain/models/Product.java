@@ -1,32 +1,20 @@
-package com.sstark.generalmarket.infrastructure.entities;
+package com.sstark.generalmarket.domain.models;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "Product")
 public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_id")
+
     private Integer productId;
 
     private String name;
 
-    @Column(name = "category_id")
     private Integer categoryId;
 
     private String barcode;
 
-    @Column(name = "sale_price")
     private Double salePrice;
 
     private Integer stock;
 
     private Boolean state;
-
-    @ManyToOne
-    @JoinColumn(name = "category_id", insertable = false, updatable = false)
-    private Category category;
 
     public Integer getProductId() {
         return productId;

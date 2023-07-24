@@ -21,7 +21,7 @@ public class BuyProduct {
 
     @ManyToOne
     @JoinColumn(name = "product_id", insertable = false, updatable = false)
-    private Product product;
+    private ProductEntity product;
 
     public BuyProductPK getId() {
         return id;

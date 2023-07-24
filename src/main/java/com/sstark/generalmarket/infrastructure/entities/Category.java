@@ -17,7 +17,7 @@ public class Category {
     private Boolean state;
 
     @OneToMany(mappedBy = "category")
-    private List<Product> products;
+    private List<ProductEntity> products;
 
     public Integer getCategoryId() {
         return categoryId;
