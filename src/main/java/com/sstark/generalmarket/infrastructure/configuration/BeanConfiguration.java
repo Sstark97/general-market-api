@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan(basePackages = "com.sstark.generalmarket")
 public class BeanConfiguration {
-
     @Bean
     ProductService productService(final ProductRepository productRepository) {
         return new ProductService(productRepository);

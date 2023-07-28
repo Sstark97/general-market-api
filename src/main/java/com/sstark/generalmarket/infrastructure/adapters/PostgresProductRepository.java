@@ -4,7 +4,6 @@ import com.sstark.generalmarket.domain.models.Product;
 import com.sstark.generalmarket.domain.repositories.ProductRepository;
 import com.sstark.generalmarket.infrastructure.entities.ProductEntity;
 import com.sstark.generalmarket.infrastructure.repositories.ProductJPARepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -13,7 +12,6 @@ import java.util.List;
 public class PostgresProductRepository implements ProductRepository {
     private final ProductJPARepository repository;
 
-    @Autowired
     public PostgresProductRepository(ProductJPARepository repository) {
         this.repository = repository;
     }
