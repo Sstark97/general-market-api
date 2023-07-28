@@ -24,4 +24,8 @@ public class ProductService {
     public Optional<Product> findByProductNameAscending(String name) {
         return productRepository.findByProductNameAscending(name);
     }
+
+    public Product save (Product product) {
+        return productRepository.save(product);
+    }
 }

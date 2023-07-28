@@ -71,4 +71,15 @@ class ProductServiceTest {
         assertTrue(productToFind.isPresent());
         assertEquals(allProducts.get(0), productToFind.get());
     }
+
+    @Test
+    public void save_a_new_product() {
+        Product productToSave = new Product(3, "Product3",1,"13245", 23.2,4,true);
+
+        Mockito.when(productRepository.save(productToSave)).thenReturn(productToSave);
+
+        Product productSaved = productService.save(productToSave);
+
+        assertEquals(productToSave, productSaved);
+    }
 }

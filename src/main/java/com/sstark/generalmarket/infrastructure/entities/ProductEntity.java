@@ -28,6 +28,18 @@ public class ProductEntity {
     @JoinColumn(name = "category_id", insertable = false, updatable = false)
     private Category category;
 
+    public ProductEntity(Integer productId, String name, Integer categoryId, String barcode, Double salePrice, Integer stock, Boolean state) {
+        this.productId = productId;
+        this.name = name;
+        this.categoryId = categoryId;
+        this.barcode = barcode;
+        this.salePrice = salePrice;
+        this.stock = stock;
+        this.state = state;
+    }
+
+    public ProductEntity() {}
+
     public Integer getProductId() {
         return productId;
     }

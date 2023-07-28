@@ -29,6 +29,18 @@ public class PostgresProductRepository implements ProductRepository {
         );
     }
 
+    private ProductEntity productToEntity(Product product) {
+        return new ProductEntity(
+                product.getProductId(),
+                product.getName(),
+                product.getCategoryId(),
+                product.getBarcode(),
+                product.getSalePrice(),
+                product.getStock(),
+                product.getState()
+        );
+    }
+
     @Override
     public List<Product> findAll() {
         return repository.findAll().stream().map(this::entityToProduct).toList();
@@ -42,5 +54,10 @@ public class PostgresProductRepository implements ProductRepository {
     @Override
     public Optional<Product> findByProductNameAscending(String productName) {
         return repository.findByNameOrderByNameAsc(productName);
+    }
+
+    @Override
+    public Product save(Product productToSave) {
+        return this.entityToProduct(repository.save(this.productToEntity(productToSave)));
     }
 }
