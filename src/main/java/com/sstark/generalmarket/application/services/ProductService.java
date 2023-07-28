@@ -18,4 +18,8 @@ public class ProductService {
 
         return products.isEmpty() ? Optional.empty() : Optional.of(products);
     }
+
+    public List<Product> findByCategory(int categoryId) {
+        return productRepository.findAllByCategoryId(categoryId);
+    }
 }
