@@ -2,16 +2,18 @@ package com.sstark.generalmarket.infrastructure.controllers;
 
 import com.sstark.generalmarket.application.services.ProductService;
 import com.sstark.generalmarket.domain.models.Product;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/products")
 public class ProductController {
     private final ProductService productService;
 
@@ -24,24 +26,28 @@ public class ProductController {
         return "<h1>Hello world!!🤓</h1>";
     }
 
-    @GetMapping("/products")
-    public String products() {
+    @GetMapping("/all")
+    public List<Product> products() {
         List<Product> products = productService.findAll();
 
-        return products.isEmpty() ? "No products found" : products.stream().toList().toString();
+        return products.stream().toList();
     }
 
-    @GetMapping("/products/category/{categoryId}")
-    public String productsByCategory(@PathVariable int categoryId) {
+    @GetMapping("/category/{categoryId}")
+    public List<Product> productsByCategory(@PathVariable int categoryId) {
         List<Product> products = productService.findByCategory(categoryId);
 
-        return products.isEmpty() ? "No products found" : products.stream().toList().toString();
+        return products.stream().toList();
     }
 
-    @GetMapping("/product/name/{productName}")
-    public String productOrderByNameAsc(@PathVariable String productName) {
+    @GetMapping("/name/{productName}")
+    public Product productOrderByNameAsc(@PathVariable String productName) {
         Optional<Product> product = productService.findByProductNameAscending(productName);
 
-        return product.isPresent() ? product.get().toString() : "Product not found";
+        if(product.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found");
+        }
+
+        return product.get();
     }
 }
