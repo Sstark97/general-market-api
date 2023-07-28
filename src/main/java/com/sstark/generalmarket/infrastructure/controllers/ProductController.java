@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/")
@@ -26,7 +25,7 @@ public class ProductController {
 
     @GetMapping("/products")
     public String products() {
-        Optional<List<Product>> products = productService.findAll();
+        List<Product> products = productService.findAll();
 
         return products.isEmpty() ? "No products found" : products.stream().toList().toString();
     }

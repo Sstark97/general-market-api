@@ -29,7 +29,7 @@ class ProductServiceTest {
         );
         Mockito.when(productRepository.findAll()).thenReturn(allProducts);
 
-        List<Product> products = productService.findAll().orElseThrow();
+        List<Product> products = productService.findAll();
 
         assertEquals(allProducts, products);
     }

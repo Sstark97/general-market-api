@@ -4,7 +4,6 @@ import com.sstark.generalmarket.domain.models.Product;
 import com.sstark.generalmarket.domain.repositories.ProductRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 public class ProductService {
     private final ProductRepository productRepository;
@@ -13,10 +12,9 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public Optional<List<Product>> findAll() {
-        List<Product> products = productRepository.findAll();
+    public List<Product> findAll() {
 
-        return products.isEmpty() ? Optional.empty() : Optional.of(products);
+        return productRepository.findAll();
     }
 
     public List<Product> findByCategory(int categoryId) {
