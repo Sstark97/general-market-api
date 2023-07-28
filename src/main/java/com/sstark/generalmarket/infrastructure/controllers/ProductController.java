@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/")
@@ -35,6 +36,13 @@ public class ProductController {
         List<Product> products = productService.findByCategory(categoryId);
 
         return products.isEmpty() ? "No products found" : products.stream().toList().toString();
+    }
+
+    @GetMapping("/product/name/{productName}")
+    public String productOrderByNameAsc(@PathVariable String productName) {
+        Optional<Product> product = productService.findByProductNameAscending(productName);
+
+        return product.isPresent() ? product.get().toString() : "Product not found";
     }
 
 }
