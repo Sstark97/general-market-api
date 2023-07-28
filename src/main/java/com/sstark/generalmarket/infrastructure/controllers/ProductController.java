@@ -44,5 +44,4 @@ public class ProductController {
 
         return product.isPresent() ? product.get().toString() : "Product not found";
     }
-
 }
