@@ -3,10 +3,7 @@ package com.sstark.generalmarket.infrastructure.controllers;
 import com.sstark.generalmarket.application.services.ProductService;
 import com.sstark.generalmarket.domain.models.Product;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -49,5 +46,10 @@ public class ProductController {
         }
 
         return product.get();
+    }
+
+    @PostMapping("/save")
+    public Product saveProduct(@RequestBody Product product) {
+        return productService.save(product);
     }
 }
