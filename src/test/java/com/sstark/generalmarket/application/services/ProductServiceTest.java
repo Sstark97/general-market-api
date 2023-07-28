@@ -53,4 +53,20 @@ class ProductServiceTest {
                 ), products
         );
     }
+
+    @Test
+    public void find_a_product_by_name_ir_ascending_order(){
+        List<Product> allProducts = Arrays.asList(
+                new Product(1,"Product 1", 1,"12345", 10.0, 3, true),
+                new Product(2,"Product 2", 2,"2341", 20.0, 4 , false)
+        );
+
+        Mockito.when(productRepository.findByProductNameAscending("Product")).thenReturn(
+                allProducts.get(0)
+        );
+
+        Product productToFind = productService.findByProductNameAscending("Product");
+
+        assertEquals(productToFind, allProducts.get(0));
+    }
 }
