@@ -8,6 +8,7 @@ import org.mockito.Mockito;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -62,11 +63,12 @@ class ProductServiceTest {
         );
 
         Mockito.when(productRepository.findByProductNameAscending("Product")).thenReturn(
-                allProducts.get(0)
+                Optional.ofNullable(allProducts.get(0))
         );
 
-        Product productToFind = productService.findByProductNameAscending("Product");
+        Optional<Product> productToFind = productService.findByProductNameAscending("Product");
 
-        assertEquals(productToFind, allProducts.get(0));
+        assertTrue(productToFind.isPresent());
+        assertEquals(allProducts.get(0), productToFind.get());
     }
 }

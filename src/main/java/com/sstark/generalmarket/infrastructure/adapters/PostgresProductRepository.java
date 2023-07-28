@@ -7,6 +7,7 @@ import com.sstark.generalmarket.infrastructure.repositories.ProductJPARepository
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class PostgresProductRepository implements ProductRepository {
@@ -36,5 +37,10 @@ public class PostgresProductRepository implements ProductRepository {
     @Override
     public List<Product> findAllByCategoryId(int categoryId) {
         return repository.findByCategoryId(categoryId);
+    }
+
+    @Override
+    public Optional<Product> findByProductNameAscending(String productName) {
+        return repository.findByNameOrderByNameAsc(productName);
     }
 }
