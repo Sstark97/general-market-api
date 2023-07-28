@@ -35,6 +35,6 @@ public class PostgresProductRepository implements ProductRepository {
 
     @Override
     public List<Product> findAllByCategoryId(int categoryId) {
-        throw new RuntimeException("Not implemented yet");
+        return repository.findByCategoryId(categoryId);
     }
 }
