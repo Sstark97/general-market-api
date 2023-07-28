@@ -32,4 +32,9 @@ public class PostgresProductRepository implements ProductRepository {
     public List<Product> findAll() {
         return repository.findAll().stream().map(this::entityToProduct).toList();
     }
+
+    @Override
+    public List<Product> findAllByCategoryId(int categoryId) {
+        throw new RuntimeException("Not implemented yet");
+    }
 }

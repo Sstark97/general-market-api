@@ -30,4 +30,23 @@ class ProductServiceTest {
                 ), products
         );
     }
+
+    @Test
+    public void find_all_products_by_first_category() {
+        ProductRepository productRepository = Mockito.mock(ProductRepository.class);
+        ProductService productService = new ProductService(productRepository);
+
+        Mockito.when(productRepository.findAllByCategoryId(1)).thenReturn(Arrays.asList(
+                new Product(1,"Product 1", 1,"12345", 10.0, 3, true),
+                new Product(2,"Product 2", 2,"2341", 20.0, 4 , false)
+        ));
+
+        List<Product> products = productService.findByCategory(1);
+
+        assertEquals(
+                Arrays.asList(
+                        new Product(1,"Product 1", 1,"12345", 10.0, 3, true),
+                ), products
+        );
+    }
 }
