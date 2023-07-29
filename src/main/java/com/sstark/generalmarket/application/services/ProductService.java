@@ -35,7 +35,7 @@ public class ProductService {
 
     public boolean deleteBy(int productId) {
         if(getById(productId).isPresent()) {
-            deleteBy(productId);
+            productRepository.deleteBy(productId);
             return true;
         }
 
