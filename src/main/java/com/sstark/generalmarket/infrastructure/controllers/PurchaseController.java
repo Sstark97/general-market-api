@@ -4,6 +4,7 @@ import com.sstark.generalmarket.application.services.PurchaseService;
 import com.sstark.generalmarket.domain.models.Purchase;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,5 +22,10 @@ public class PurchaseController {
     @GetMapping("/all")
     public ResponseEntity<List<Purchase>> getAllPurchase() {
         return ResponseEntity.ok(purchaseService.getAll());
+    }
+
+    @GetMapping("/all/{clientId}")
+    public ResponseEntity<List<Purchase>> getAllPurchasesByClient(@PathVariable String clientId) {
+        return ResponseEntity.ok(purchaseService.getByClient(clientId));
     }
 }

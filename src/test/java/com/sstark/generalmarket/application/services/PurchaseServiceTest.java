@@ -9,7 +9,6 @@ import org.mockito.Mockito;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -46,8 +45,8 @@ class PurchaseServiceTest {
                         ))
         );
 
-        Mockito.when(purchaseRepository.getByClient("1")).thenReturn(Optional.of(purchasesByClient));
+        Mockito.when(purchaseRepository.getByClient("1")).thenReturn(purchasesByClient);
 
-        assertEquals(purchaseService.getByClient("1"), Optional.of(purchasesByClient));
+        assertEquals(purchaseService.getByClient("1"), purchasesByClient);
     }
 }

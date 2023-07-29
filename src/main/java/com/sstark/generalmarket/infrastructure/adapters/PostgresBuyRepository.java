@@ -7,7 +7,6 @@ import com.sstark.generalmarket.infrastructure.repositories.PurchaseJPARepositor
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class PostgresBuyRepository implements PurchaseRepository {
@@ -25,7 +24,7 @@ public class PostgresBuyRepository implements PurchaseRepository {
     }
 
     @Override
-    public Optional<List<Purchase>> getByClient(String clientId) {
-        return Optional.empty();
+    public List<Purchase> getByClient(String clientId) {
+        return mapper.toPurchases(repository.findByClientId(clientId));
     }
 }
