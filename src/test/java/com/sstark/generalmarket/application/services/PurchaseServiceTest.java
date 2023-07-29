@@ -39,7 +39,7 @@ class PurchaseServiceTest {
         PurchaseRepository purchaseRepository = Mockito.mock(PurchaseRepository.class);
         PurchaseService purchaseService = new PurchaseService(purchaseRepository);
 
-        List<Purchase> purchasesByClient = Arrays.asList(
+        List<Purchase> purchasesByClient = List.of(
                 new Purchase(1, "1", LocalDateTime.now(), "bank", "comment", "pay",
                         List.of(
                                 new PurchaseItem(1, 2, 23.3, true)
@@ -48,6 +48,6 @@ class PurchaseServiceTest {
 
         Mockito.when(purchaseRepository.getByClient("1")).thenReturn(Optional.of(purchasesByClient));
 
-        assertEquals(purchaseService.getByClient("1"), purchasesByClient);
+        assertEquals(purchaseService.getByClient("1"), Optional.of(purchasesByClient));
     }
 }
