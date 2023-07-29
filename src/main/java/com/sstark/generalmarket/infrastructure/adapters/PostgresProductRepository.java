@@ -47,4 +47,9 @@ public class PostgresProductRepository implements ProductRepository {
         ProductEntity productEntity = mapper.toProductEntity(productToSave);
         return mapper.toProduct(repository.save(productEntity));
     }
+
+    @Override
+    public void deleteBy(int productId) {
+
+    }
 }

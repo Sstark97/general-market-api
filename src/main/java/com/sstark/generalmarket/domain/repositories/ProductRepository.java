@@ -11,4 +11,5 @@ public interface ProductRepository {
     Optional<Product> findByProductNameAscending(String productName);
     Optional<Product> findByProductId(int productId);
     Product save(Product productToSave);
+    void deleteBy(int productId);
 }

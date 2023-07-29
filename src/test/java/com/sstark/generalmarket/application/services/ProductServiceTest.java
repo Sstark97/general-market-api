@@ -99,4 +99,15 @@ class ProductServiceTest {
 
         assertTrue(productFounded.isPresent());
     }
+
+    @Test
+    public void delete_an_existed_product() {
+        Product productToDelete = new Product(1, "Product 1", 1, "12345", 10.0, 3, true);
+        Mockito.when(productRepository.findByProductId(1)).thenReturn(Optional.of(productToDelete));
+
+        boolean isDeleted = productService.deleteBy(1);
+
+        Mockito.verify(productRepository).deleteBy(1);
+        assertTrue(isDeleted);
+    }
 }

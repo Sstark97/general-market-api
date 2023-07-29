@@ -32,4 +32,13 @@ public class ProductService {
     public Optional<Product> getById(int productId) {
         return productRepository.findByProductId(productId);
     }
+
+    public boolean deleteBy(int productId) {
+        if(getById(productId).isPresent()) {
+            deleteBy(productId);
+            return true;
+        }
+
+        return false;
+    }
 }
