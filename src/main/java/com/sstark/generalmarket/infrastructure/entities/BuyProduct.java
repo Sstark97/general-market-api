@@ -16,6 +16,7 @@ public class BuyProduct {
     private Boolean state;
 
     @ManyToOne
+    @MapsId("buyId")
     @JoinColumn(name = "buy_id", insertable = false, updatable = false)
     private Buy buy;
 
@@ -55,11 +56,15 @@ public class BuyProduct {
         this.state = state;
     }
 
+    public ProductEntity getProduct() {
+        return product;
+    }
+
     public Buy getBuy() {
         return buy;
     }
 
-    public ProductEntity getProduct() {
-        return product;
+    public void setBuy(Buy buy) {
+        this.buy = buy;
     }
 }

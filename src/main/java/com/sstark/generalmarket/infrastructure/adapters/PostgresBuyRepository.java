@@ -2,6 +2,7 @@ package com.sstark.generalmarket.infrastructure.adapters;
 
 import com.sstark.generalmarket.domain.models.Purchase;
 import com.sstark.generalmarket.domain.repositories.PurchaseRepository;
+import com.sstark.generalmarket.infrastructure.entities.Buy;
 import com.sstark.generalmarket.infrastructure.mappers.PurchaseMapper;
 import com.sstark.generalmarket.infrastructure.repositories.PurchaseJPARepository;
 import org.springframework.stereotype.Component;
@@ -26,5 +27,10 @@ public class PostgresBuyRepository implements PurchaseRepository {
     @Override
     public List<Purchase> getByClient(String clientId) {
         return mapper.toPurchases(repository.findByClientId(clientId));
+    }
+
+    @Override
+    public Purchase save(Purchase purchase) {
+        return null;
     }
 }

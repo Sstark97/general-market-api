@@ -42,11 +42,27 @@ class PurchaseServiceTest {
                 new Purchase(1, "1", LocalDateTime.now(), "bank", "comment", "pay",
                         List.of(
                                 new PurchaseItem(1, 2, 23.3, true)
-                        ))
+                        )
+                )
         );
 
         Mockito.when(purchaseRepository.getByClient("1")).thenReturn(purchasesByClient);
 
         assertEquals(purchaseService.getByClient("1"), purchasesByClient);
+    }
+
+    @Test
+    public void save_a_new_purchase(){
+        PurchaseRepository purchaseRepository = Mockito.mock(PurchaseRepository.class);
+        PurchaseService purchaseService = new PurchaseService(purchaseRepository);
+        Purchase purchase = new Purchase(1, "1", LocalDateTime.now(), "bank", "comment", "pay",
+            List.of(
+                    new PurchaseItem(1, 2, 23.3, true)
+            )
+        );
+
+        Mockito.when(purchaseRepository.save(purchase)).thenReturn(purchase);
+
+        assertEquals(purchaseService.save(purchase), purchase);
     }
 }
