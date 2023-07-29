@@ -10,7 +10,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ProductServiceTest {
     private static ProductRepository productRepository;
@@ -81,5 +82,21 @@ class ProductServiceTest {
         Product productSaved = productService.save(productToSave);
 
         assertEquals(productToSave, productSaved);
+    }
+
+    @Test
+    public void get_a_product_by_id() {
+        List<Product> allProducts = Arrays.asList(
+                new Product(1,"Product 1", 1,"12345", 10.0, 3, true),
+                new Product(2,"Product 2", 2,"2341", 20.0, 4 , false)
+        );
+
+        Mockito.when(productRepository.findByProductId(1)).thenReturn(
+                Optional.of(allProducts.stream().filter(product -> product.getProductId() == 1).toList().get(0))
+        );
+
+        Optional<Product> productFounded = productService.getById(1);
+
+        assertTrue(productFounded.isPresent());
     }
 }

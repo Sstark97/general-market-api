@@ -36,6 +36,11 @@ public class PostgresProductRepository implements ProductRepository {
     }
 
     @Override
+    public Optional<Product> findByProductId(int productId) {
+        return Optional.empty();
+    }
+
+    @Override
     public Product save(Product productToSave) {
         ProductEntity productEntity = mapper.toProductEntity(productToSave);
         return mapper.toProduct(repository.save(productEntity));

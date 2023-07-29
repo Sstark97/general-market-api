@@ -28,4 +28,8 @@ public class ProductService {
     public Product save (Product product) {
         return productRepository.save(product);
     }
+
+    public Optional<Product> getById(int productId) {
+        return productRepository.findByProductId(productId);
+    }
 }
