@@ -48,6 +48,17 @@ public class ProductController {
         return product.get();
     }
 
+    @GetMapping("/id/{productId}")
+    public Product productById(@PathVariable int productId) {
+        Optional<Product> product = productService.getById(productId);
+
+        if(product.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found");
+        }
+
+        return product.get();
+    }
+
     @PostMapping("/save")
     public Product saveProduct(@RequestBody Product product) {
         return productService.save(product);
