@@ -1,7 +1,9 @@
 package com.sstark.generalmarket.infrastructure.mappers;
 
 import com.sstark.generalmarket.domain.models.Purchase;
+import com.sstark.generalmarket.domain.models.PurchaseItem;
 import com.sstark.generalmarket.infrastructure.entities.Buy;
+import com.sstark.generalmarket.infrastructure.entities.BuyProduct;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

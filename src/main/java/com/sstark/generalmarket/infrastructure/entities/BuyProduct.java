@@ -54,4 +54,12 @@ public class BuyProduct {
     public void setState(Boolean state) {
         this.state = state;
     }
+
+    public Buy getBuy() {
+        return buy;
+    }
+
+    public ProductEntity getProduct() {
+        return product;
+    }
 }

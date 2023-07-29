@@ -79,4 +79,12 @@ public class Buy {
     public void setState(String state) {
         this.state = state;
     }
+
+    public List<BuyProduct> getBuyProducts() {
+        return buyProducts;
+    }
+
+    public Client getClient() {
+        return client;
+    }
 }
