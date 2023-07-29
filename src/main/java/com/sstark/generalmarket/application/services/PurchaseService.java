@@ -6,7 +6,7 @@ import com.sstark.generalmarket.domain.repositories.PurchaseRepository;
 import java.util.List;
 
 public class PurchaseService {
-    private PurchaseRepository purchaseRepository;
+    private final PurchaseRepository purchaseRepository;
 
     public PurchaseService(PurchaseRepository purchaseRepository) {
         this.purchaseRepository = purchaseRepository;

@@ -1,7 +1,9 @@
 package com.sstark.generalmarket.infrastructure.configuration;
 
 import com.sstark.generalmarket.application.services.ProductService;
+import com.sstark.generalmarket.application.services.PurchaseService;
 import com.sstark.generalmarket.domain.repositories.ProductRepository;
+import com.sstark.generalmarket.domain.repositories.PurchaseRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -12,5 +14,10 @@ public class BeanConfiguration {
     @Bean
     ProductService productService(final ProductRepository productRepository) {
         return new ProductService(productRepository);
+    }
+
+    @Bean
+    PurchaseService purchaseService(final PurchaseRepository purchaseRepository) {
+        return new PurchaseService(purchaseRepository);
     }
 }
