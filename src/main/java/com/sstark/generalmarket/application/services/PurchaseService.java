@@ -19,4 +19,8 @@ public class PurchaseService {
     public List<Purchase> getByClient(String clientId) {
         return purchaseRepository.getByClient(clientId);
     }
+
+    public Purchase save(Purchase purchase) {
+        return purchaseRepository.save(purchase);
+    }
 }
