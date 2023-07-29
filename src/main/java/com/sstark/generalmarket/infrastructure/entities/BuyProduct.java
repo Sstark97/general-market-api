@@ -67,4 +67,16 @@ public class BuyProduct {
     public void setBuy(Buy buy) {
         this.buy = buy;
     }
+
+    @Override
+    public String toString() {
+        return "BuyProduct{" +
+                "id=" + id +
+                ", amount=" + amount +
+                ", total=" + total +
+                ", state=" + state +
+                ", buy=" + buy +
+                ", product=" + product +
+                '}';
+    }
 }

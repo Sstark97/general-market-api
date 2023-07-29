@@ -80,11 +80,15 @@ public class Buy {
         this.state = state;
     }
 
+    public Client getClient() {
+        return client;
+    }
+
     public List<BuyProduct> getBuyProducts() {
         return buyProducts;
     }
 
-    public Client getClient() {
-        return client;
+    public void setBuyProducts(List<BuyProduct> buyProducts) {
+        this.buyProducts = buyProducts;
     }
 }

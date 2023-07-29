@@ -31,6 +31,10 @@ public class PostgresBuyRepository implements PurchaseRepository {
 
     @Override
     public Purchase save(Purchase purchase) {
-        return null;
+        Buy buy = mapper.toBuy(purchase);
+        System.out.println(buy);
+        buy.getBuyProducts().forEach(product -> { product.setBuy(buy);});
+
+        return mapper.toPurchase(repository.save(buy));
     }
 }
