@@ -63,4 +63,9 @@ public class ProductController {
     public Product saveProduct(@RequestBody Product product) {
         return productService.save(product);
     }
+
+    @DeleteMapping("/id/{productId}")
+    public boolean deleteById(@PathVariable int productId) {
+        return productService.deleteBy(productId);
+    }
 }

@@ -50,6 +50,6 @@ public class PostgresProductRepository implements ProductRepository {
 
     @Override
     public void deleteBy(int productId) {
-
+        repository.deleteById(productId);
     }
 }
