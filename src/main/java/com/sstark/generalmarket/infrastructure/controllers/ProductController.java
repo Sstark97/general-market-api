@@ -3,8 +3,8 @@ package com.sstark.generalmarket.infrastructure.controllers;
 import com.sstark.generalmarket.application.services.ProductService;
 import com.sstark.generalmarket.domain.models.Product;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,48 +24,39 @@ public class ProductController {
     }
 
     @GetMapping("/all")
-    public List<Product> products() {
-        List<Product> products = productService.findAll();
+    public ResponseEntity<List<Product>> products() {
 
-        return products.stream().toList();
+        return new ResponseEntity<>(productService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/category/{categoryId}")
-    public List<Product> productsByCategory(@PathVariable int categoryId) {
-        List<Product> products = productService.findByCategory(categoryId);
+    public ResponseEntity<List<Product>> productsByCategory(@PathVariable int categoryId) {
 
-        return products.stream().toList();
+        return new ResponseEntity<>(productService.findByCategory(categoryId), HttpStatus.OK);
     }
 
     @GetMapping("/name/{productName}")
-    public Product productOrderByNameAsc(@PathVariable String productName) {
+    public ResponseEntity<Product> productOrderByNameAsc(@PathVariable String productName) {
         Optional<Product> product = productService.findByProductNameAscending(productName);
 
-        if(product.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found");
-        }
-
-        return product.get();
+        return ResponseEntity.of(product);
     }
 
     @GetMapping("/id/{productId}")
-    public Product productById(@PathVariable int productId) {
+    public ResponseEntity<Product> productById(@PathVariable int productId) {
         Optional<Product> product = productService.getById(productId);
 
-        if(product.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found");
-        }
-
-        return product.get();
+        return ResponseEntity.of(product);
     }
 
     @PostMapping("/save")
-    public Product saveProduct(@RequestBody Product product) {
-        return productService.save(product);
+    public ResponseEntity<Product> saveProduct(@RequestBody Product product) {
+        return new ResponseEntity<>(productService.save(product), HttpStatus.OK);
     }
 
     @DeleteMapping("/id/{productId}")
-    public boolean deleteById(@PathVariable int productId) {
-        return productService.deleteBy(productId);
+    public ResponseEntity deleteById(@PathVariable int productId) {
+        HttpStatus status = productService.deleteBy(productId) ? HttpStatus.OK : HttpStatus.NOT_FOUND;
+        return new ResponseEntity(status);
     }
 }
