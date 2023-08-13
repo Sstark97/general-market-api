@@ -1,5 +1,6 @@
 package com.sstark.generalmarket.domain.repositories;
 
+import com.sstark.generalmarket.domain.models.MarketPage;
 import com.sstark.generalmarket.domain.models.Product;
 
 import java.util.List;
@@ -12,4 +13,6 @@ public interface ProductRepository {
     Optional<Product> findByProductId(int productId);
     Product save(Product productToSave);
     void deleteBy(int productId);
+
+    MarketPage<Product> findAllByPage(int page, int elements);
 }

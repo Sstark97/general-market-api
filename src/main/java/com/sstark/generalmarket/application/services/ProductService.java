@@ -1,5 +1,6 @@
 package com.sstark.generalmarket.application.services;
 
+import com.sstark.generalmarket.domain.models.MarketPage;
 import com.sstark.generalmarket.domain.models.Product;
 import com.sstark.generalmarket.domain.repositories.ProductRepository;
 
@@ -40,5 +41,9 @@ public class ProductService {
         }
 
         return false;
+    }
+
+    public MarketPage<Product> getAllByPage(int page, int elements) {
+        return productRepository.findAllByPage(page, elements);
     }
 }

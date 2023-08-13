@@ -1,11 +1,11 @@
 package com.sstark.generalmarket.application.services;
 
+import com.sstark.generalmarket.domain.models.MarketPage;
 import com.sstark.generalmarket.domain.models.Product;
 import com.sstark.generalmarket.domain.repositories.ProductRepository;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.springframework.data.domain.Page;
 
 import java.util.Arrays;
 import java.util.List;
@@ -114,11 +114,10 @@ class ProductServiceTest {
 
     @Test
     public void get_all_products_paginated() {
-        Page<Product> productsByPage = Mockito.mock(Page.class);
-
+        MarketPage<Product> productsByPage = Mockito.mock(MarketPage.class);
         Mockito.when(productRepository.findAllByPage(1,2)).thenReturn(productsByPage);
 
-        Page<Product> productsResult = productService.getAllByPage(1,2);
+        MarketPage<Product> productsResult = productService.getAllByPage(1,2);
 
         assertEquals(productsResult, productsByPage);
     }

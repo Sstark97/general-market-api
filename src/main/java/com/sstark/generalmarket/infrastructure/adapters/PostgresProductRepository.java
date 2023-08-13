@@ -1,5 +1,6 @@
 package com.sstark.generalmarket.infrastructure.adapters;
 
+import com.sstark.generalmarket.domain.models.MarketPage;
 import com.sstark.generalmarket.domain.models.Product;
 import com.sstark.generalmarket.domain.repositories.ProductRepository;
 import com.sstark.generalmarket.infrastructure.entities.ProductEntity;
@@ -51,5 +52,10 @@ public class PostgresProductRepository implements ProductRepository {
     @Override
     public void deleteBy(int productId) {
         repository.deleteById(productId);
+    }
+
+    @Override
+    public MarketPage<Product> findAllByPage(int page, int elements) {
+        return null;
     }
 }
