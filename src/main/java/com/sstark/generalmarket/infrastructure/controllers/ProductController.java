@@ -1,6 +1,7 @@
 package com.sstark.generalmarket.infrastructure.controllers;
 
 import com.sstark.generalmarket.application.services.ProductService;
+import com.sstark.generalmarket.domain.models.MarketPage;
 import com.sstark.generalmarket.domain.models.Product;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,6 +48,13 @@ public class ProductController {
         Optional<Product> product = productService.getById(productId);
 
         return ResponseEntity.of(product);
+    }
+
+    @GetMapping("/byPage")
+    public ResponseEntity<MarketPage<Product>> productsPaginated(@RequestParam(defaultValue = "0") int page,
+                                                                 @RequestParam(defaultValue = "5") int elements) {
+        MarketPage<Product> productsPage = productService.getAllByPage(page, elements);
+        return ResponseEntity.ok(productsPage);
     }
 
     @PostMapping("/save")

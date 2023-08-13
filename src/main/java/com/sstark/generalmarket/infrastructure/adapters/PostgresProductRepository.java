@@ -4,8 +4,11 @@ import com.sstark.generalmarket.domain.models.MarketPage;
 import com.sstark.generalmarket.domain.models.Product;
 import com.sstark.generalmarket.domain.repositories.ProductRepository;
 import com.sstark.generalmarket.infrastructure.entities.ProductEntity;
+import com.sstark.generalmarket.infrastructure.mappers.PageMapper;
 import com.sstark.generalmarket.infrastructure.mappers.ProductMapper;
 import com.sstark.generalmarket.infrastructure.repositories.ProductJPARepository;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -15,10 +18,12 @@ import java.util.Optional;
 public class PostgresProductRepository implements ProductRepository {
     private final ProductJPARepository repository;
     private final ProductMapper mapper;
+    private final PageMapper pageMapper;
 
-    public PostgresProductRepository(ProductJPARepository repository, ProductMapper mapper) {
+    public PostgresProductRepository(ProductJPARepository repository, ProductMapper mapper, PageMapper pageMapper) {
         this.repository = repository;
         this.mapper = mapper;
+        this.pageMapper = pageMapper;
     }
 
     @Override
@@ -56,6 +61,7 @@ public class PostgresProductRepository implements ProductRepository {
 
     @Override
     public MarketPage<Product> findAllByPage(int page, int elements) {
-        return null;
+        Pageable pageable = PageRequest.of(page, elements);
+        return pageMapper.toMarketPage(repository.findAll(pageable).map(mapper::toProduct));
     }
 }
