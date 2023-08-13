@@ -5,6 +5,7 @@ import com.sstark.generalmarket.domain.repositories.ProductRepository;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.springframework.data.domain.Page;
 
 import java.util.Arrays;
 import java.util.List;
@@ -109,5 +110,16 @@ class ProductServiceTest {
 
         Mockito.verify(productRepository).deleteBy(1);
         assertTrue(isDeleted);
+    }
+
+    @Test
+    public void get_all_products_paginated() {
+        Page<Product> productsByPage = Mockito.mock(Page.class);
+
+        Mockito.when(productRepository.findAllByPage(1,2)).thenReturn(productsByPage);
+
+        Page<Product> productsResult = productService.getAllByPage(1,2);
+
+        assertEquals(productsResult, productsByPage);
     }
 }
