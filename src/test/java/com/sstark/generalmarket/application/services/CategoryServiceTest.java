@@ -1,5 +1,6 @@
 package com.sstark.generalmarket.application.services;
 
+import com.sstark.generalmarket.domain.repositories.CategoryRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -11,9 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CategoryServiceTest {
     @Test
     public void get_all_categories(){
-        CategorieRepository repository = Mockito.mock(CategoryRepository.class);
+        CategoryRepository repository = Mockito.mock(CategoryRepository.class);
         CategoryService service = new CategoryService(repository);
-        Mockito.when(repository.getAllCategories).thenReturn(Arrays.asList(
+        Mockito.when(repository.getAllCategories()).thenReturn(Arrays.asList(
                 "category 1",
                 "category 2",
                 "category 3",
