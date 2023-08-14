@@ -1,6 +1,7 @@
 package com.sstark.generalmarket.application.services;
 
 import com.sstark.generalmarket.domain.repositories.CategoryRepository;
+import com.sstark.generalmarket.infrastructure.dto.CategoryWithIdDto;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 

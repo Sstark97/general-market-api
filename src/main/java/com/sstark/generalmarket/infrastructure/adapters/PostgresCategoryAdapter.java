@@ -1,6 +1,7 @@
 package com.sstark.generalmarket.infrastructure.adapters;
 
 import com.sstark.generalmarket.domain.repositories.CategoryRepository;
+import com.sstark.generalmarket.infrastructure.dto.CategoryWithIdDto;
 import com.sstark.generalmarket.infrastructure.repositories.CategoryJpaRepository;
 import org.springframework.stereotype.Component;
 
@@ -17,5 +18,10 @@ public class PostgresCategoryAdapter implements CategoryRepository {
     @Override
     public List<String> getAllCategories() {
         return repository.getAllCategories();
+    }
+
+    @Override
+    public List<CategoryWithIdDto> getAllCategoriesWithId() {
+        return null;
     }
 }
