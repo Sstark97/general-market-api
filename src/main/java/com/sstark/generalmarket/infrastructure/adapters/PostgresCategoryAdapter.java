@@ -1,5 +1,6 @@
 package com.sstark.generalmarket.infrastructure.adapters;
 
+import com.sstark.generalmarket.domain.models.Category;
 import com.sstark.generalmarket.domain.repositories.CategoryRepository;
 import com.sstark.generalmarket.infrastructure.dto.CategoryWithIdDto;
 import com.sstark.generalmarket.infrastructure.mappers.CategoryMapper;
@@ -26,5 +27,10 @@ public class PostgresCategoryAdapter implements CategoryRepository {
     @Override
     public List<CategoryWithIdDto> getAllCategoriesWithId() {
         return mapper.toCategoryWithIdDtoList(repository.findAll());
+    }
+
+    @Override
+    public Category save(Category category) {
+        return null;
     }
 }

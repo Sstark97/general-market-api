@@ -1,5 +1,6 @@
 package com.sstark.generalmarket.application.services;
 
+import com.sstark.generalmarket.domain.models.Category;
 import com.sstark.generalmarket.domain.repositories.CategoryRepository;
 import com.sstark.generalmarket.infrastructure.dto.CategoryWithIdDto;
 
@@ -18,5 +19,9 @@ public class CategoryService {
 
     public List<CategoryWithIdDto> getAllCategoriesWithId() {
         return repository.getAllCategoriesWithId();
+    }
+
+    public Category save(Category category) {
+        return repository.save(category);
     }
 }

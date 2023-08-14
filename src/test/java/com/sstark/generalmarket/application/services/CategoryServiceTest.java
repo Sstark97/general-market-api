@@ -1,8 +1,8 @@
 package com.sstark.generalmarket.application.services;
 
+import com.sstark.generalmarket.domain.models.Category;
 import com.sstark.generalmarket.domain.repositories.CategoryRepository;
 import com.sstark.generalmarket.infrastructure.dto.CategoryWithIdDto;
-import com.sstark.generalmarket.infrastructure.entities.Category;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
