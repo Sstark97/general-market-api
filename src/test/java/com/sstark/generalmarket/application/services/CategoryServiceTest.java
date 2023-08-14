@@ -30,4 +30,25 @@ public class CategoryServiceTest {
                 "category 4"
         ));
     }
+
+    @Test
+    public void get_all_categories_with_id(){
+        CategoryRepository repository = Mockito.mock(CategoryRepository.class);
+        CategoryService service = new CategoryService(repository);
+        Mockito.when(repository.getAllCategoriesWithId()).thenReturn(Arrays.asList(
+                new CategoryWithIdDto(1, "category 1"),
+                new CategoryWithIdDto(2, "category 2"),
+                new CategoryWithIdDto(3, "category 3"),
+                new CategoryWithIdDto(4, "category 4")
+        ));
+
+        List<CategoryWithIdDto> allCategories = service.getAllCategoriesWithId();
+
+        assertEquals(allCategories, Arrays.asList(
+                new CategoryWithIdDto(1, "category 1"),
+                new CategoryWithIdDto(2, "category 2"),
+                new CategoryWithIdDto(3, "category 3"),
+                new CategoryWithIdDto(4, "category 4")
+        ));
+    }
 }
