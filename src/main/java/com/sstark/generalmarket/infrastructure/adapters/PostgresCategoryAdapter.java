@@ -2,6 +2,7 @@ package com.sstark.generalmarket.infrastructure.adapters;
 
 import com.sstark.generalmarket.domain.repositories.CategoryRepository;
 import com.sstark.generalmarket.infrastructure.dto.CategoryWithIdDto;
+import com.sstark.generalmarket.infrastructure.mappers.CategoryMapper;
 import com.sstark.generalmarket.infrastructure.repositories.CategoryJpaRepository;
 import org.springframework.stereotype.Component;
 
@@ -10,9 +11,11 @@ import java.util.List;
 @Component
 public class PostgresCategoryAdapter implements CategoryRepository {
     private final CategoryJpaRepository repository;
+    private final CategoryMapper mapper;
 
-    public PostgresCategoryAdapter(CategoryJpaRepository repository) {
+    public PostgresCategoryAdapter(CategoryJpaRepository repository, CategoryMapper mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     @Override
@@ -22,6 +25,6 @@ public class PostgresCategoryAdapter implements CategoryRepository {
 
     @Override
     public List<CategoryWithIdDto> getAllCategoriesWithId() {
-        return null;
+        return mapper.toCategoryWithIdDtoList(repository.findAll());
     }
 }

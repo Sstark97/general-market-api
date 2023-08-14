@@ -1,6 +1,7 @@
 package com.sstark.generalmarket.infrastructure.controllers;
 
 import com.sstark.generalmarket.application.services.CategoryService;
+import com.sstark.generalmarket.infrastructure.dto.CategoryWithIdDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,5 +21,10 @@ public class CategoryController {
     @GetMapping("/all")
     public ResponseEntity<List<String>> getAllCategories() {
         return ResponseEntity.ok(service.getAllCategories());
+    }
+
+    @GetMapping("/allWithId")
+    public ResponseEntity<List<CategoryWithIdDto>> getAllCategoriesWithId() {
+        return ResponseEntity.ok(service.getAllCategoriesWithId());
     }
 }
