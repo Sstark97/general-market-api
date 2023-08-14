@@ -2,6 +2,7 @@ package com.sstark.generalmarket.application.services;
 
 import com.sstark.generalmarket.domain.repositories.CategoryRepository;
 import com.sstark.generalmarket.infrastructure.dto.CategoryWithIdDto;
+import com.sstark.generalmarket.infrastructure.entities.Category;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -55,5 +56,15 @@ public class CategoryServiceTest {
                 new CategoryWithIdDto(3, "category 3"),
                 new CategoryWithIdDto(4, "category 4")
         ));
+    }
+
+    @Test
+    public void save_a_new_category() {
+        Category category = new Category("Category 1", true);
+        Mockito.when(repository.save(category)).thenReturn(category);
+
+        Category categorySaved = service.save(category);
+
+        assertEquals(categorySaved, category);
     }
 }
