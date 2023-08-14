@@ -26,7 +26,7 @@ public class ProductEntity {
 
     @ManyToOne
     @JoinColumn(name = "category_id", insertable = false, updatable = false)
-    private Category category;
+    private CategoryEntity category;
 
     public ProductEntity(Integer productId, String name, Integer categoryId, String barcode, Double salePrice, Integer stock, Boolean state) {
         this.productId = productId;

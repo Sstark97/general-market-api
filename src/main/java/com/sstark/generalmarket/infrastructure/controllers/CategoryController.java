@@ -1,11 +1,10 @@
 package com.sstark.generalmarket.infrastructure.controllers;
 
 import com.sstark.generalmarket.application.services.CategoryService;
+import com.sstark.generalmarket.domain.models.Category;
 import com.sstark.generalmarket.infrastructure.dto.CategoryWithIdDto;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +25,10 @@ public class CategoryController {
     @GetMapping("/allWithId")
     public ResponseEntity<List<CategoryWithIdDto>> getAllCategoriesWithId() {
         return ResponseEntity.ok(service.getAllCategoriesWithId());
+    }
+
+    @PostMapping("/save")
+    public ResponseEntity<Category> saveCategory(@RequestBody Category category) {
+        return ResponseEntity.ok(service.save(category));
     }
 }

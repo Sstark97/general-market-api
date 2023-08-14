@@ -31,6 +31,6 @@ public class PostgresCategoryAdapter implements CategoryRepository {
 
     @Override
     public Category save(Category category) {
-        return null;
+        return mapper.toDomainModel(repository.save(mapper.toEntity(category)));
     }
 }
