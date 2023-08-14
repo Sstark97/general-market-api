@@ -1,11 +1,9 @@
 package com.sstark.generalmarket.application.services;
 
 import com.sstark.generalmarket.domain.repositories.CategoryRepository;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
 public class CategoryService {
     private final CategoryRepository repository;
 

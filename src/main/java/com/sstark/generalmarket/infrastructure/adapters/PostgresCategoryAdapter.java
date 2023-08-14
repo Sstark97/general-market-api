@@ -16,6 +16,6 @@ public class PostgresCategoryAdapter implements CategoryRepository {
 
     @Override
     public List<String> getAllCategories() {
-        return null;
+        return repository.getAllCategories();
     }
 }
