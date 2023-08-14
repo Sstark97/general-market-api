@@ -6,7 +6,7 @@ import com.sstark.generalmarket.domain.repositories.ProductRepository;
 import com.sstark.generalmarket.infrastructure.entities.ProductEntity;
 import com.sstark.generalmarket.infrastructure.mappers.PageMapper;
 import com.sstark.generalmarket.infrastructure.mappers.ProductMapper;
-import com.sstark.generalmarket.infrastructure.repositories.ProductJPARepository;
+import com.sstark.generalmarket.infrastructure.repositories.ProductJpaRepository;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
@@ -16,11 +16,11 @@ import java.util.Optional;
 
 @Component
 public class PostgresProductRepository implements ProductRepository {
-    private final ProductJPARepository repository;
+    private final ProductJpaRepository repository;
     private final ProductMapper mapper;
     private final PageMapper pageMapper;
 
-    public PostgresProductRepository(ProductJPARepository repository, ProductMapper mapper, PageMapper pageMapper) {
+    public PostgresProductRepository(ProductJpaRepository repository, ProductMapper mapper, PageMapper pageMapper) {
         this.repository = repository;
         this.mapper = mapper;
         this.pageMapper = pageMapper;

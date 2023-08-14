@@ -4,17 +4,17 @@ import com.sstark.generalmarket.domain.models.Purchase;
 import com.sstark.generalmarket.domain.repositories.PurchaseRepository;
 import com.sstark.generalmarket.infrastructure.entities.Buy;
 import com.sstark.generalmarket.infrastructure.mappers.PurchaseMapper;
-import com.sstark.generalmarket.infrastructure.repositories.PurchaseJPARepository;
+import com.sstark.generalmarket.infrastructure.repositories.PurchaseJpaRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
 public class PostgresBuyRepository implements PurchaseRepository {
-    private final PurchaseJPARepository repository;
+    private final PurchaseJpaRepository repository;
     private final PurchaseMapper mapper;
 
-    public PostgresBuyRepository(PurchaseJPARepository repository, PurchaseMapper mapper) {
+    public PostgresBuyRepository(PurchaseJpaRepository repository, PurchaseMapper mapper) {
         this.repository = repository;
         this.mapper = mapper;
     }

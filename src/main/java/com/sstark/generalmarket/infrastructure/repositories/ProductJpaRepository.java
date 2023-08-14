@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ProductJPARepository extends JpaRepository<ProductEntity, Integer> {
+public interface ProductJpaRepository extends JpaRepository<ProductEntity, Integer> {
     List<Product> findByCategoryId(int categoryId);
     Optional<Product> findByNameOrderByNameAsc(String name);
 }

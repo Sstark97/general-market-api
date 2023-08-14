@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PurchaseJPARepository extends JpaRepository<Buy, Integer> {
+public interface PurchaseJpaRepository extends JpaRepository<Buy, Integer> {
     List<Buy> findByClientId(String clientId);
 }
