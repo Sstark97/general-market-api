@@ -3,6 +3,7 @@ package com.sstark.generalmarket.application.services;
 import com.sstark.generalmarket.domain.models.Category;
 import com.sstark.generalmarket.domain.repositories.CategoryRepository;
 import com.sstark.generalmarket.infrastructure.dto.CategoryDto;
+import com.sstark.generalmarket.infrastructure.dto.CategoryToUpdateDto;
 import com.sstark.generalmarket.infrastructure.dto.CategoryWithIdDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -71,9 +72,10 @@ public class CategoryServiceTest {
 
     @Test
     public void update_a_category_state(){
-        Mockito.when(repository.updateState(1, false)).thenReturn(new CategoryDto(1,"irrelevant",false));
+        CategoryToUpdateDto categoryToUpdateDto = new CategoryToUpdateDto(1, false);
+        Mockito.when(repository.updateState(categoryToUpdateDto)).thenReturn(new CategoryDto(1,"irrelevant",false));
 
-        CategoryDto categoryUpdated = service.updateCategoryState(1, false);
+        CategoryDto categoryUpdated = service.updateCategoryState(categoryToUpdateDto);
 
         assertFalse(categoryUpdated.getState());
     }

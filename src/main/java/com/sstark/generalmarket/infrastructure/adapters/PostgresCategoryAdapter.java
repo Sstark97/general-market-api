@@ -3,6 +3,7 @@ package com.sstark.generalmarket.infrastructure.adapters;
 import com.sstark.generalmarket.domain.models.Category;
 import com.sstark.generalmarket.domain.repositories.CategoryRepository;
 import com.sstark.generalmarket.infrastructure.dto.CategoryDto;
+import com.sstark.generalmarket.infrastructure.dto.CategoryToUpdateDto;
 import com.sstark.generalmarket.infrastructure.dto.CategoryWithIdDto;
 import com.sstark.generalmarket.infrastructure.mappers.CategoryMapper;
 import com.sstark.generalmarket.infrastructure.repositories.CategoryJpaRepository;
@@ -36,7 +37,7 @@ public class PostgresCategoryAdapter implements CategoryRepository {
     }
 
     @Override
-    public CategoryDto updateState(Integer id, boolean state) {
-        return null;
+    public CategoryDto updateState(CategoryToUpdateDto categoryToUpdateDto) {
+        return mapper.toCategoryDto(repository.updateCategoryState(categoryToUpdateDto));
     }
 }
