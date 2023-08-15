@@ -7,6 +7,7 @@ import com.sstark.generalmarket.infrastructure.dto.CategoryToUpdateDto;
 import com.sstark.generalmarket.infrastructure.dto.CategoryWithIdDto;
 
 import java.util.List;
+import java.util.Optional;
 
 public class CategoryService {
     private final CategoryRepository repository;
@@ -27,7 +28,7 @@ public class CategoryService {
         return repository.save(category);
     }
 
-    public CategoryDto updateCategoryState(CategoryToUpdateDto categoryToUpdateDto) {
+    public Optional<CategoryDto> updateCategoryState(CategoryToUpdateDto categoryToUpdateDto) {
         return repository.updateState(categoryToUpdateDto);
     }
 }

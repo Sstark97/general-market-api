@@ -11,6 +11,7 @@ import org.mockito.Mockito;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -73,10 +74,11 @@ public class CategoryServiceTest {
     @Test
     public void update_a_category_state(){
         CategoryToUpdateDto categoryToUpdateDto = new CategoryToUpdateDto(1, false);
-        Mockito.when(repository.updateState(categoryToUpdateDto)).thenReturn(new CategoryDto(1,"irrelevant",false));
+        Mockito.when(repository.updateState(categoryToUpdateDto)).thenReturn(Optional.of(new CategoryDto(1,"irrelevant",false)));
 
-        CategoryDto categoryUpdated = service.updateCategoryState(categoryToUpdateDto);
+        Optional<CategoryDto> categoryUpdated = service.updateCategoryState(categoryToUpdateDto);
 
-        assertFalse(categoryUpdated.getState());
+        assertTrue(categoryUpdated.isPresent());
+        assertFalse(categoryUpdated.get().getState());
     }
 }

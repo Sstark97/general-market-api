@@ -17,5 +17,5 @@ public interface CategoryJpaRepository extends JpaRepository<CategoryEntity, Int
 
     @Query(value = "UPDATE CategoryEntity SET state = :#{#categoryToUpdateDto.state()} WHERE categoryId = :#{#categoryToUpdateDto.id()}")
     @Modifying
-    CategoryEntity updateCategoryState(@Param("categoryToUpdateDto")CategoryToUpdateDto categoryToUpdateDto);
+    void updateCategoryState(@Param("categoryToUpdateDto")CategoryToUpdateDto categoryToUpdateDto);
 }
