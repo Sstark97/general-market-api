@@ -2,6 +2,7 @@ package com.sstark.generalmarket.application.services;
 
 import com.sstark.generalmarket.domain.models.Category;
 import com.sstark.generalmarket.domain.repositories.CategoryRepository;
+import com.sstark.generalmarket.infrastructure.dto.CategoryDto;
 import com.sstark.generalmarket.infrastructure.dto.CategoryWithIdDto;
 
 import java.util.List;
@@ -23,5 +24,9 @@ public class CategoryService {
 
     public Category save(Category category) {
         return repository.save(category);
+    }
+
+    public CategoryDto updateCategoryState(Integer id, boolean state) {
+        return repository.updateState(id, state);
     }
 }
