@@ -10,7 +10,7 @@ import org.mockito.Mockito;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CategoryServiceTest {
     CategoryRepository repository;
@@ -66,5 +66,14 @@ public class CategoryServiceTest {
         Category categorySaved = service.save(category);
 
         assertEquals(categorySaved, category);
+    }
+
+    @Test
+    public void update_a_category_state(){
+        Mockito.when(repository.updateState(1, false)).thenReturn(new CategoryDto(1,"irrelevant",false));
+
+        CategoryDto categoryUpdated = service.updateCategoryState(1, false);
+
+        assertFalse(categoryUpdated.getState());
     }
 }
