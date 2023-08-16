@@ -1,6 +1,7 @@
 package com.sstark.generalmarket.infrastructure.mappers;
 
 import com.sstark.generalmarket.domain.models.Category;
+import com.sstark.generalmarket.infrastructure.dto.CategoryDto;
 import com.sstark.generalmarket.infrastructure.dto.CategoryWithIdDto;
 import com.sstark.generalmarket.infrastructure.entities.CategoryEntity;
 import org.mapstruct.InheritInverseConfiguration;
@@ -28,4 +29,11 @@ public interface CategoryMapper {
 
     @InheritInverseConfiguration
     CategoryEntity toEntity(Category category);
+
+    @Mappings({
+            @Mapping(target = "id", source = "categoryId"),
+            @Mapping(target = "title", source = "description"),
+            @Mapping(target = "state", source = "state")
+    })
+    CategoryDto toCategoryDto(CategoryEntity category);
 }

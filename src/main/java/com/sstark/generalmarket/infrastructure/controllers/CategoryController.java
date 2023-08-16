@@ -2,6 +2,8 @@ package com.sstark.generalmarket.infrastructure.controllers;
 
 import com.sstark.generalmarket.application.services.CategoryService;
 import com.sstark.generalmarket.domain.models.Category;
+import com.sstark.generalmarket.infrastructure.dto.CategoryDto;
+import com.sstark.generalmarket.infrastructure.dto.CategoryToUpdateDto;
 import com.sstark.generalmarket.infrastructure.dto.CategoryWithIdDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,5 +32,10 @@ public class CategoryController {
     @PostMapping("/save")
     public ResponseEntity<Category> saveCategory(@RequestBody Category category) {
         return ResponseEntity.ok(service.save(category));
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<CategoryDto> updateCategoryState(@RequestBody CategoryToUpdateDto categoryToUpdate) {
+        return ResponseEntity.of(service.updateCategoryState(categoryToUpdate));
     }
 }

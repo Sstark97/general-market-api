@@ -5,11 +5,14 @@ import com.sstark.generalmarket.domain.repositories.CategoryRepository;
 import com.sstark.generalmarket.infrastructure.dto.CategoryDto;
 import com.sstark.generalmarket.infrastructure.dto.CategoryToUpdateDto;
 import com.sstark.generalmarket.infrastructure.dto.CategoryWithIdDto;
+import com.sstark.generalmarket.infrastructure.entities.CategoryEntity;
 import com.sstark.generalmarket.infrastructure.mappers.CategoryMapper;
 import com.sstark.generalmarket.infrastructure.repositories.CategoryJpaRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class PostgresCategoryAdapter implements CategoryRepository {
@@ -37,7 +40,17 @@ public class PostgresCategoryAdapter implements CategoryRepository {
     }
 
     @Override
-    public CategoryDto updateState(CategoryToUpdateDto categoryToUpdateDto) {
-        return mapper.toCategoryDto(repository.updateCategoryState(categoryToUpdateDto));
+    @Transactional
+    public Optional<CategoryDto> updateState(CategoryToUpdateDto categoryToUpdateDto) {
+        Optional<CategoryEntity> categoryEntity = repository.findById(categoryToUpdateDto.id());
+
+        if(categoryEntity.isPresent()) {
+            CategoryEntity category = categoryEntity.get();
+            category.setState(categoryToUpdateDto.state());
+            repository.updateCategoryState(categoryToUpdateDto);
+            return Optional.of(mapper.toCategoryDto(category));
+        }
+
+        return Optional.empty();
     }
 }
