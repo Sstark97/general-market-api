@@ -81,4 +81,25 @@ public class CategoryServiceTest {
         assertTrue(categoryUpdated.isPresent());
         assertFalse(categoryUpdated.get().getState());
     }
+
+    @Test
+    public void get_the_three_categories_with_more_products() {
+        List<CategoryWithNumberOfProductsDto> categoriesWithNumberOfProducts = Arrays.asList(
+                new CategoryWithNumberOfProductsDto(1, "category 1", 5),
+                new CategoryWithNumberOfProductsDto(2, "category 2", 3),
+                new CategoryWithNumberOfProductsDto(3, "category 3", 6),
+                new CategoryWithNumberOfProductsDto(4, "category 4", 1)
+        );
+        Mockito.when(repository.getTheCategoriesWithMoreProducts(2)).thenReturn(Arrays.asList(
+                categoriesWithNumberOfProducts.get(0),
+                categoriesWithNumberOfProducts.get(2)
+        ));
+
+        List<CategoryWithNumberOfProductsDto> categoriesWithProductsResult = service.getThegetTheCategoriesWithMoreProducts(2);
+
+        assertEquals(categoriesWithProductsResult, Arrays.asList(
+                categoriesWithNumberOfProducts.get(0),
+                categoriesWithNumberOfProducts.get(2)
+        ));
+    }
 }
