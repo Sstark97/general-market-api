@@ -5,6 +5,7 @@ import com.sstark.generalmarket.domain.repositories.CategoryRepository;
 import com.sstark.generalmarket.infrastructure.dto.CategoryDto;
 import com.sstark.generalmarket.infrastructure.dto.CategoryToUpdateDto;
 import com.sstark.generalmarket.infrastructure.dto.CategoryWithIdDto;
+import com.sstark.generalmarket.infrastructure.dto.CategoryWithNumberOfProductsDto;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,5 +31,9 @@ public class CategoryService {
 
     public Optional<CategoryDto> updateCategoryState(CategoryToUpdateDto categoryToUpdateDto) {
         return repository.updateState(categoryToUpdateDto);
+    }
+
+    public List<CategoryWithNumberOfProductsDto> getTheCategoriesWithMoreProducts(Integer numberOfCategories) {
+        return repository.getTheCategoriesWithMoreProducts(2);
     }
 }

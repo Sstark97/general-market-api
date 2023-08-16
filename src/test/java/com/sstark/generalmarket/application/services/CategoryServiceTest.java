@@ -5,6 +5,7 @@ import com.sstark.generalmarket.domain.repositories.CategoryRepository;
 import com.sstark.generalmarket.infrastructure.dto.CategoryDto;
 import com.sstark.generalmarket.infrastructure.dto.CategoryToUpdateDto;
 import com.sstark.generalmarket.infrastructure.dto.CategoryWithIdDto;
+import com.sstark.generalmarket.infrastructure.dto.CategoryWithNumberOfProductsDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -95,7 +96,7 @@ public class CategoryServiceTest {
                 categoriesWithNumberOfProducts.get(2)
         ));
 
-        List<CategoryWithNumberOfProductsDto> categoriesWithProductsResult = service.getThegetTheCategoriesWithMoreProducts(2);
+        List<CategoryWithNumberOfProductsDto> categoriesWithProductsResult = service.getTheCategoriesWithMoreProducts(2);
 
         assertEquals(categoriesWithProductsResult, Arrays.asList(
                 categoriesWithNumberOfProducts.get(0),
