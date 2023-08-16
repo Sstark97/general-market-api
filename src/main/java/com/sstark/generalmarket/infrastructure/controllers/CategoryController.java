@@ -5,6 +5,7 @@ import com.sstark.generalmarket.domain.models.Category;
 import com.sstark.generalmarket.infrastructure.dto.CategoryDto;
 import com.sstark.generalmarket.infrastructure.dto.CategoryToUpdateDto;
 import com.sstark.generalmarket.infrastructure.dto.CategoryWithIdDto;
+import com.sstark.generalmarket.infrastructure.dto.CategoryWithNumberOfProductsDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +28,11 @@ public class CategoryController {
     @GetMapping("/allWithId")
     public ResponseEntity<List<CategoryWithIdDto>> getAllCategoriesWithId() {
         return ResponseEntity.ok(service.getAllCategoriesWithId());
+    }
+
+    @GetMapping("/withMoreProducts")
+    public ResponseEntity<List<CategoryWithNumberOfProductsDto>> getCategoriesWithMoreProducts(@RequestParam(defaultValue = "3") Integer numberOfCategories) {
+        return ResponseEntity.ok(service.getTheCategoriesWithMoreProducts(numberOfCategories));
     }
 
     @PostMapping("/save")

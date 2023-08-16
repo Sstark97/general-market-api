@@ -57,6 +57,8 @@ public class PostgresCategoryAdapter implements CategoryRepository {
 
     @Override
     public List<CategoryWithNumberOfProductsDto> getTheCategoriesWithMoreProducts(Integer numberOfCategories) {
-        return null;
+        System.out.println(repository.findTheCategoriesWithMoreProducts(2));
+        repository.findTheCategoriesWithMoreProducts(2).forEach(categoryWithNumberOfProductsDto -> System.out.println(categoryWithNumberOfProductsDto.getCategoryId()));
+        return repository.findTheCategoriesWithMoreProducts(2);
     }
 }
