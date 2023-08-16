@@ -85,11 +85,28 @@ public class CategoryServiceTest {
 
     @Test
     public void get_the_three_categories_with_more_products() {
+        record CategoryWithNumberOfProducts(Integer id, String Description, Integer numberOfProducts) implements CategoryWithNumberOfProductsDto {
+            @Override
+            public Integer getCategoryId() {
+                return null;
+            }
+
+            @Override
+            public String getDescription() {
+                return null;
+            }
+
+            @Override
+            public Integer getNumberOfProducts() {
+                return null;
+            }
+        }
+
         List<CategoryWithNumberOfProductsDto> categoriesWithNumberOfProducts = Arrays.asList(
-                new CategoryWithNumberOfProductsDto(1, "category 1", 5),
-                new CategoryWithNumberOfProductsDto(2, "category 2", 3),
-                new CategoryWithNumberOfProductsDto(3, "category 3", 6),
-                new CategoryWithNumberOfProductsDto(4, "category 4", 1)
+                new CategoryWithNumberOfProducts(1, "category 1", 5),
+                new CategoryWithNumberOfProducts(2, "category 2", 3),
+                new CategoryWithNumberOfProducts(3, "category 3", 6),
+                new CategoryWithNumberOfProducts(4, "category 4", 1)
         );
         Mockito.when(repository.getTheCategoriesWithMoreProducts(2)).thenReturn(Arrays.asList(
                 categoriesWithNumberOfProducts.get(0),
