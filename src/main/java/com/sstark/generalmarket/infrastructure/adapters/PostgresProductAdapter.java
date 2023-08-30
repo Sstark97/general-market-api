@@ -15,12 +15,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class PostgresProductRepository implements ProductRepository {
+public class PostgresProductAdapter implements ProductRepository {
     private final ProductJpaRepository repository;
     private final ProductMapper mapper;
     private final PageMapper pageMapper;
 
-    public PostgresProductRepository(ProductJpaRepository repository, ProductMapper mapper, PageMapper pageMapper) {
+    public PostgresProductAdapter(ProductJpaRepository repository, ProductMapper mapper, PageMapper pageMapper) {
         this.repository = repository;
         this.mapper = mapper;
         this.pageMapper = pageMapper;

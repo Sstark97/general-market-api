@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class PostgresBuyRepository implements PurchaseRepository {
+public class PostgresBuyAdapter implements PurchaseRepository {
     private final PurchaseJpaRepository repository;
     private final PurchaseMapper mapper;
 
-    public PostgresBuyRepository(PurchaseJpaRepository repository, PurchaseMapper mapper) {
+    public PostgresBuyAdapter(PurchaseJpaRepository repository, PurchaseMapper mapper) {
         this.repository = repository;
         this.mapper = mapper;
     }
