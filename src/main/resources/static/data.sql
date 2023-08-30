@@ -1,3 +1,9 @@
+CREATE TABLE IF NOT EXISTS Category(
+    category_id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    state BOOLEAN NOT NULL
+);
+
 -- CATEGORIAS
 INSERT INTO Category VALUES (1, 'Frutas y verduras', true);
 INSERT INTO Category VALUES (2, 'Pastelería', true);
@@ -7,6 +13,17 @@ INSERT INTO Category VALUES (5, 'Bebidas', true);
 INSERT INTO Category VALUES (6, 'Licores', true);
 INSERT INTO Category VALUES (7, 'Cuidado personal', true);
 INSERT INTO Category VALUES (8, 'Despensa', true);
+
+CREATE TABLE IF NOT EXISTS Product(
+    product_id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    category_id INTEGER NOT NULL,
+    barcode VARCHAR(50) NOT NULL,
+    sale_price INTEGER NOT NULL,
+    state BOOLEAN NOT NULL,
+    stock INTEGER NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES Category(category_id)
+);
 
 -- PRODUCTOS
 INSERT INTO Product(product_id, name, category_id, barcode, sale_price, state, stock) VALUES (1, 'Guayaba Feijoa', 1, '7029 A42 23', 300, true, 500);
@@ -60,13 +77,41 @@ INSERT INTO Product(product_id, name, category_id, barcode, sale_price, state, s
 INSERT INTO Product(product_id, name, category_id, barcode, sale_price, state, stock) VALUES (49, 'Frijol', 8, '2745 F40 45', 8200, true, 270);
 INSERT INTO Product(product_id, name, category_id, barcode, sale_price, state, stock) VALUES (50, 'Café', 8, '6351 R33 92', 7200, true, 400);
 
+CREATE TABLE IF NOT EXISTS Client(
+    id VARCHAR(50) PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    surname VARCHAR(50) NOT NULL,
+    phone BIGINT NOT NULL,
+    address VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL
+);
 -- CLIENTES
 INSERT INTO Client(id, name, surname, phone, address, email) VALUES ('4546221', 'Johannes', 'Kepler', 3104583224, 'Cl 3 # 33 - 33', 'kepler@me.com');
 INSERT INTO Client(id, name, surname, phone, address, email) VALUES ('2552243', 'Galileo', 'Galilei', 3462257293, 'Cl 1 # 11 - 11', 'gali@leo.com');
 INSERT INTO Client(id, name, surname, phone, address, email) VALUES ('983824', 'Nicolás', 'Copernico', 3019392466, 'Cl 2 # 22 - 22', 'nico@cope.com');
 
+CREATE TABLE IF NOT EXISTS Buy(
+    buy_id SERIAL PRIMARY KEY,
+    client_id VARCHAR(50) NOT NULL,
+    address VARCHAR(50) NOT NULL,
+    date TIMESTAMP NOT NULL,
+    state VARCHAR(1) NOT NULL,
+    payment_method VARCHAR(1) NOT NULL,
+    FOREIGN KEY (client_id) REFERENCES Client(id)
+);
 -- COMPRA
 INSERT INTO Buy VALUES (1, '4546221', '', TO_TIMESTAMP('10/08/1992 17:30:00','DD/MM/YYYY HH24:MI:SS'), 'E', 'P');
+
+CREATE TABLE IF NOT EXISTS Buy_Product(
+    buy_id INTEGER NOT NULL,
+    product_id INTEGER NOT NULL,
+    quantity INTEGER NOT NULL,
+    state BOOLEAN NOT NULL,
+    total INTEGER NOT NULL,
+    FOREIGN KEY (buy_id) REFERENCES Buy(buy_id),
+    FOREIGN KEY (product_id) REFERENCES Product(product_id)
+);
+
 INSERT INTO Buy_Product VALUES (1, 1, 10, true, 3000);
 INSERT INTO Buy_Product VALUES (1, 36, 1,  true,40000);
 INSERT INTO Buy_Product VALUES (1, 27, 1, true, 9000);
