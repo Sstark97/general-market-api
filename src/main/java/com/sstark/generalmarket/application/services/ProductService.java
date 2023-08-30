@@ -2,7 +2,7 @@ package com.sstark.generalmarket.application.services;
 
 import com.sstark.generalmarket.domain.models.MarketPage;
 import com.sstark.generalmarket.domain.models.Product;
-import com.sstark.generalmarket.domain.repositories.ProductRepository;
+import com.sstark.generalmarket.application.repositories.ProductRepository;
 
 import java.util.List;
 import java.util.Optional;

@@ -2,7 +2,7 @@ package com.sstark.generalmarket.infrastructure.adapters;
 
 import com.sstark.generalmarket.domain.models.MarketPage;
 import com.sstark.generalmarket.domain.models.Product;
-import com.sstark.generalmarket.domain.repositories.ProductRepository;
+import com.sstark.generalmarket.application.repositories.ProductRepository;
 import com.sstark.generalmarket.infrastructure.entities.ProductEntity;
 import com.sstark.generalmarket.infrastructure.mappers.PageMapper;
 import com.sstark.generalmarket.infrastructure.mappers.ProductMapper;

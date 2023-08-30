@@ -1,7 +1,7 @@
 package com.sstark.generalmarket.application.services;
 
 import com.sstark.generalmarket.domain.models.Purchase;
-import com.sstark.generalmarket.domain.repositories.PurchaseRepository;
+import com.sstark.generalmarket.application.repositories.PurchaseRepository;
 
 import java.util.List;
 

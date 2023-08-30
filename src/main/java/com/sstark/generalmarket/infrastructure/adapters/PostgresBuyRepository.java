@@ -1,7 +1,7 @@
 package com.sstark.generalmarket.infrastructure.adapters;
 
 import com.sstark.generalmarket.domain.models.Purchase;
-import com.sstark.generalmarket.domain.repositories.PurchaseRepository;
+import com.sstark.generalmarket.application.repositories.PurchaseRepository;
 import com.sstark.generalmarket.infrastructure.entities.Buy;
 import com.sstark.generalmarket.infrastructure.mappers.PurchaseMapper;
 import com.sstark.generalmarket.infrastructure.repositories.PurchaseJpaRepository;

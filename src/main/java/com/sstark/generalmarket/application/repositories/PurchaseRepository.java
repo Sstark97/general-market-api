@@ -1,4 +1,4 @@
-package com.sstark.generalmarket.domain.repositories;
+package com.sstark.generalmarket.application.repositories;
 
 import com.sstark.generalmarket.domain.models.Purchase;
 

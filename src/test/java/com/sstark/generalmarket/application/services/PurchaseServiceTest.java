@@ -2,7 +2,7 @@ package com.sstark.generalmarket.application.services;
 
 import com.sstark.generalmarket.domain.models.Purchase;
 import com.sstark.generalmarket.domain.models.PurchaseItem;
-import com.sstark.generalmarket.domain.repositories.PurchaseRepository;
+import com.sstark.generalmarket.application.repositories.PurchaseRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 

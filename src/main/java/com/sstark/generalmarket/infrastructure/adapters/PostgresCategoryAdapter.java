@@ -1,7 +1,7 @@
 package com.sstark.generalmarket.infrastructure.adapters;
 
 import com.sstark.generalmarket.domain.models.Category;
-import com.sstark.generalmarket.domain.repositories.CategoryRepository;
+import com.sstark.generalmarket.application.repositories.CategoryRepository;
 import com.sstark.generalmarket.infrastructure.dto.CategoryDto;
 import com.sstark.generalmarket.infrastructure.dto.CategoryToUpdateDto;
 import com.sstark.generalmarket.infrastructure.dto.CategoryWithIdDto;
